@@ -1,0 +1,32 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.title {
+  justify-content: center;
+  display: flex;
+  color: rgb(62, 13, 102);
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.input {
+  border: 1px solid rgb(62, 13, 102);
+  border-radius: 5px;
+  transition: all 350ms linear;
+  outline: none;
+  height: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.input:hover {
+  outline: 4px auto rgb(62, 13, 102);
+}
+
+.input:focus,
+input:focus-visible {
+  outline: 4px auto rgb(62, 13, 102);
+}

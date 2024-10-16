@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item {
+  color: rgb(62, 13, 102);
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 15px;
+
+  gap: 15px;
+}
