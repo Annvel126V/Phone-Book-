@@ -44,6 +44,11 @@ export const logout = createAsyncThunk("logout", async (_, thunkAPI) => {
 });
 
 export const refreshUser = createAsyncThunk("refresh", async (_, thunkAPI) => {
+  const savedToken = thunkAPI.getState().auth.token;
+  if (savedToken === null) {
+    return thunkAPI.rejectWithValue("Token not found!");
+  }
+  setAuthHeader(savedToken);
   try {
     const { data } = await phoneBookApi.get("users/current");
     return data;
