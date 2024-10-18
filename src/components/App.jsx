@@ -18,13 +18,19 @@ import ContactsPage from "../pages/ContactsPage/ContactsPage";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "../redux/auth/operations";
+import { selectIsRefreshing } from "../redux/auth/selectors";
+import Spiner from "./Spiner/Spiner";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return (
+
+  const isRefreshing = useSelector(selectIsRefreshing);
+  return isRefreshing ? (
+    <Spiner />
+  ) : (
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
