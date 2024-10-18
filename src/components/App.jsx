@@ -1,26 +1,18 @@
-// import ContactForm from "./ContactForm/ContactForm";
-// import ContactList from "./ContactList/ContactList";
-// import SearchBox from "./SearchBox/SearchBox";
-// import s from "./App.module.css";
-// import { FaPhoneVolume } from "react-icons/fa6";
-// import { fetchContacts } from "../redux/contacts/operations";
-// import { selectError, selectLoading } from "../redux/contacts/slice";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import Spiner from "./Spiner/Spiner";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
-import HomePage from "../pages/HomePage/HomePage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
-import LoginPage from "../pages/LoginPage/LoginPage";
-import ContactsPage from "../pages/ContactsPage/ContactsPage";
-import { useEffect } from "react";
+import { useEffect, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import Spiner from "./Spiner/Spiner";
 
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+const RegistrationPage = lazy(() =>
+  import("../pages/RegistrationPage/RegistrationPage")
+);
+const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
+const ContactsPage = lazy(() => import("../pages/ContactsPage/ContactsPage"));
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -31,17 +23,17 @@ const App = () => {
   return isRefreshing ? (
     <Spiner />
   ) : (
-    <div>
+    <Layout>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="contacts" element={<ContactsPage />} />
-          <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegistrationPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="contacts" element={<ContactsPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </div>
+    </Layout>
   );
 };
 
