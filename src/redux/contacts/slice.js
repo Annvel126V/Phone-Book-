@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf, createSelector } from "@reduxjs/toolkit";
-// import { initialContacts } from "../../initialContact.json";
+
 import { fetchContacts, addContact, deleteContact } from "./operations";
 
 import { logout } from "../auth/operations";
@@ -8,7 +8,7 @@ import { logout } from "../auth/operations";
 const contactSlice = createSlice({
   name: "contacts",
   initialState: {
-    // items: [...initialContacts],
+    items: [],
     loading: false,
     error: null,
   },

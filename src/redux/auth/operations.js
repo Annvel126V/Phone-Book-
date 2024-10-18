@@ -42,3 +42,12 @@ export const logout = createAsyncThunk("logout", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const refreshUser = createAsyncThunk("refresh", async (_, thunkAPI) => {
+  try {
+    const { data } = await phoneBookApi.get("users/current");
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

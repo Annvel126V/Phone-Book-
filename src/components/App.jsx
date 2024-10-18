@@ -15,8 +15,15 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import ContactsPage from "../pages/ContactsPage/ContactsPage";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "../redux/auth/operations";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   return (
     <div>
       <Routes>
