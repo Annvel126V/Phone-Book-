@@ -1,7 +1,10 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf, createSelector } from "@reduxjs/toolkit";
 // import { initialContacts } from "../../initialContact.json";
 import { fetchContacts, addContact, deleteContact } from "./operations";
-import { createSelector } from "@reduxjs/toolkit";
+
+import { logout } from "../auth/operations";
+// import { initialState } from "../auth/slice";
+
 const contactSlice = createSlice({
   name: "contacts",
   initialState: {
@@ -23,6 +26,7 @@ const contactSlice = createSlice({
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.items = state.items.filter((item) => item.id !== action.payload);
       })
+      .addCase(logout.fulfilled, () => initialState)
 
       .addMatcher(
         isAnyOf(
