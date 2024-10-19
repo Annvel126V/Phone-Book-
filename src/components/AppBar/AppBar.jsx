@@ -15,27 +15,29 @@ const AppBar = () => {
   const user = useSelector(selectUser);
 
   return (
-    <div>
-      <div className={s.title}>Phonebook</div>
-      {isLoggedIn && <p>Welcome {user.name}</p>}
+    <header className={s.header}>
+      {isLoggedIn && <p className={s.user}>Welcome {user.name}</p>}
+
       <div className={s.links}>
-        <NavLink className={buldLinkClass} to="/">
-          Home
-        </NavLink>
+        <div className={s.linkHome}>
+          <NavLink className={buldLinkClass} to="/">
+            Home
+          </NavLink>
+        </div>
         {isLoggedIn && (
           <NavLink className={buldLinkClass} to="/contacts">
             Contacts
           </NavLink>
         )}
         {!isLoggedIn && (
-          <>
+          <div className={s.link}>
             <NavLink className={buldLinkClass} to="/login">
               Login
             </NavLink>
             <NavLink className={buldLinkClass} to="/register">
               Register
             </NavLink>
-          </>
+          </div>
         )}
 
         {isLoggedIn && (
@@ -47,7 +49,7 @@ const AppBar = () => {
           </button>
         )}
       </div>
-    </div>
+    </header>
   );
 };
 

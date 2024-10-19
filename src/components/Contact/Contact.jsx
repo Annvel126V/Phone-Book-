@@ -15,24 +15,26 @@ const Contact = ({ id, name, number }) => {
     dispatch(deleteContact(id));
   };
   return (
-    <div className={s.data}>
-      <ul>
-        <li className={s.info}>
-          <div>
-            <FaUser />
-          </div>
-          {name}
-        </li>
-        <li className={s.info}>
-          <div>
-            <BsFillTelephoneFill />
-          </div>
-          {number}
-        </li>
-      </ul>
-      <button className={s.btn} type="button" onClick={onDelete}>
-        Delete
-      </button>
+    <div className={s.container}>
+      <div className={s.data}>
+        <ul>
+          <li className={s.info}>
+            <div>
+              <FaUser />
+            </div>
+            {name}
+          </li>
+          <li className={s.info}>
+            <div>
+              <BsFillTelephoneFill />
+            </div>
+            {number}
+          </li>
+        </ul>
+        <button className={s.btn} type="button" onClick={onDelete}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 };

@@ -33,7 +33,7 @@ const ContactForm = () => {
     actions.resetForm();
   };
   return (
-    <div>
+    <div className={s.container}>
       <Formik
         initialValues={{ name: "", number: "" }}
         onSubmit={handleSubmit}

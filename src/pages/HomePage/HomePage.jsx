@@ -1,5 +1,10 @@
+import s from "./HomePage.module.css";
 const HomePage = () => {
-  return <h1>Home</h1>;
+  return (
+    <h1 className={s.title}>
+      Welcome to this phonebook, please register or login.
+    </h1>
+  );
 };
 
 export default HomePage;
