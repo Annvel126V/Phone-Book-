@@ -22,9 +22,11 @@ const AppBar = () => {
         <NavLink className={buldLinkClass} to="/">
           Home
         </NavLink>
-        <NavLink className={buldLinkClass} to="/contacts">
-          Contacts
-        </NavLink>
+        {isLoggedIn && (
+          <NavLink className={buldLinkClass} to="/contacts">
+            Contacts
+          </NavLink>
+        )}
         {!isLoggedIn && (
           <>
             <NavLink className={buldLinkClass} to="/login">

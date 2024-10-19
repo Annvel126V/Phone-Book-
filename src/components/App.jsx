@@ -4,7 +4,8 @@ import { useEffect, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
-import Spiner from "./Spiner/Spiner";
+import { RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
+import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RegistrationPage = lazy(() =>
@@ -20,16 +21,35 @@ const App = () => {
   }, [dispatch]);
 
   const isRefreshing = useSelector(selectIsRefreshing);
-  return isRefreshing ? (
-    <Spiner />
-  ) : (
+  return isRefreshing ? null : (
     <Layout>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="register" element={<RegistrationPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="contacts" element={<ContactsPage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                component={<RegistrationPage />}
+                redirectTo="/contacts"
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                component={<LoginPage />}
+                redirectTo="/contacts"
+              />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
+            }
+          />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
