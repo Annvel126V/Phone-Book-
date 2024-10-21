@@ -1,8 +1,10 @@
-import s from "./NotFoundPage.module.css";
 const NotFoundPage = () => {
   return (
-    <div>
-      <h2 className={s.title}>Page not found</h2>
+    <div className="min-h-screen flex justify-center items-center">
+      <img
+        src="https://accountingdrive.com/wp-content/uploads/2022/08/404-removebg-preview.png.webp"
+        width={1000}
+      />
     </div>
   );
 };

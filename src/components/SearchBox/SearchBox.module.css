@@ -23,6 +23,8 @@
   margin-left: 40px;
   margin-right: 40px;
   width: 211px;
+  box-shadow: inset 0 -3em 3em rgb(255, 255, 255), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
 .input:hover {

@@ -14,7 +14,11 @@
   border-radius: 8px;
   gap: 15px;
   margin-bottom: 30px;
+  background-color: rgb(189, 136, 241);
+  box-shadow: inset 0 -3em 3em rgb(255, 255, 255), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
+
 .error {
   color: red;
   font-size: 0.9 em;
