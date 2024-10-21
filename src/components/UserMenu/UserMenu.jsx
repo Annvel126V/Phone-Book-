@@ -10,7 +10,7 @@ const UserMenu = () => {
     dispatch(logout());
   };
   return (
-    <div className={s.container}>
+    <div>
       <p>{user.name}</p>
       <button className={s.btn} type="button" onClick={onLogout}>
         Logout
