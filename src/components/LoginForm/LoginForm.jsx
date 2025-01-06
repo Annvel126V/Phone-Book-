@@ -13,7 +13,7 @@ const LoginForm = () => {
     dispatch(login(values))
       .unwrap()
       .then((res) => {
-        toast("Welcome, ${res.user.name}!");
+        toast(`Welcome, ${res.user.name}!`);
       })
       .catch(() => {
         toast.error("Something went wrong!");
